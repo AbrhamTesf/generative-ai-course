@@ -77,11 +77,11 @@ notebooks = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/your-org/generative-ai-course"
-Documentation = "https://github.com/your-org/generative-ai-course/wiki"
-Repository = "https://github.com/your-org/generative-ai-course.git"
-Issues = "https://github.com/your-org/generative-ai-course/issues"
-Discussions = "https://github.com/your-org/generative-ai-course/discussions"
+Homepage = "https://github.com/NERD-Community-Ethiopia/generative-ai-course"
+Documentation = "https://github.com/NERD-Community-Ethiopia/generative-ai-course/wiki"
+Repository = "https://github.com/NERD-Community-Ethiopia/generative-ai-course.git"
+Issues = "https://github.com/NERD-Community-Ethiopia/generative-ai-course/issues"
+Discussions = "https://github.com/NERD-Community-Ethiopia/generative-ai-course/discussions"
 
 [tool.setuptools.packages.find]
 where = ["."]

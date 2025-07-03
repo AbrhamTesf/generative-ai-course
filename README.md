@@ -104,7 +104,7 @@ This project implements a comprehensive CI/CD pipeline that demonstrates real-wo
 ### Quick Setup
 ```bash
 # Clone repository
-git clone https://github.com/your-org/generative-ai-course.git
+git clone https://github.com/NERD-Community-Ethiopia/generative-ai-course.git
 cd generative-ai-course
 
 # Install dependencies

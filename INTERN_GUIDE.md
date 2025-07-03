@@ -16,9 +16,14 @@ As an intern, you'll learn:
 ### 1. Initial Setup
 
 ```bash
-# Clone the repository
-git clone https://github.com/<organization>/generative-ai-course.git
+# Clone the repository with SSH
+git clone git@github.com/NERD-Community-Ethiopia/generative-ai-course.git
 cd generative-ai-course
+
+# Configure Git for DCO sign-off
+git config --global format.signoff true
+git config --global user.name "Your Full Name"
+git config --global user.email "your-email@example.com"
 
 # Create your personal branch
 git checkout -b intern/your-name
@@ -59,7 +64,7 @@ git pull origin main
 ### Making Changes
 ```bash
 # Make your changes to the codebase
-# Then commit your work
+# Then commit your work (automatically signed off)
 git add .
 git commit -m "Add Week 3 lecture materials and exercises"
 git push origin intern/your-name
@@ -174,7 +179,7 @@ pip freeze > requirements.txt
 ```
 
 ### IDE Setup
-- **VS Code**: Install Python, GitLens, and Black Formatter extensions
+- **VS Code | Cursor**: Install Python, GitLens, and Black Formatter extensions
 - **PyCharm**: Enable Black formatter and configure Git integration
 - **Vim/Emacs**: Configure with Black and flake8 integration
 
@@ -221,7 +226,7 @@ docker-compose up lint     # Run linting
 ## 📚 Documentation Standards
 
 ### Writing Documentation
-- Use clear, concise language
+- Use clear, concise language, use AI here it is really 10X
 - Include code examples
 - Keep documentation up to date
 - Use proper formatting (Markdown)

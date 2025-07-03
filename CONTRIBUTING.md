@@ -88,7 +88,7 @@ This course teaches you:
 ### Local Setup
 ```bash
 # Clone the repository
-git clone https://github.com/your-org/generative-ai-course.git
+git clone https://github.com/NERD-Community-Ethiopia/generative-ai-course.git
 cd generative-ai-course
 
 # Create virtual environment
