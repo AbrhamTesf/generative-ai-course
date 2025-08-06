@@ -10,7 +10,7 @@ venv/
 
 # Data and Models
 data/
-models/
+
 
 # IDE files
 .vscode/
