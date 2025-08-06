@@ -13,6 +13,9 @@ COPY models/ ./models
 # Copy the application code explicitly
 COPY app/ ./app
 
+# Copy the requirements file explicitly
+COPY requirements.txt .
+
 # Install the required packages
 RUN pip install --no-cache-dir -r requirements.txt
 
