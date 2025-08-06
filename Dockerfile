@@ -7,8 +7,11 @@ WORKDIR /app
 # Set the environment variable for the model path
 ENV MODEL_PATH=/app/models
 
-# Copy the current directory contents into the container at /app
-COPY . /app
+# Copy the models directory explicitly
+COPY models/ ./models
+
+# Copy the application code explicitly
+COPY app/ ./app
 
 # Install the required packages
 RUN pip install --no-cache-dir -r requirements.txt
