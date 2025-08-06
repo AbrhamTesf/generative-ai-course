@@ -1,5 +1,11 @@
 pandas
-scikit-learn
+scikit-learn==1.7.1
 fastapi
 joblib
 uvicorn
+jupyter
+matplotlib
+seaborn
+pyyaml
+mlflow
+pytest
