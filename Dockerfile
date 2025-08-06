@@ -4,6 +4,9 @@ FROM python:3.10
 # Set the working directory in the container
 WORKDIR /app
 
+# Set the environment variable for the model path
+ENV MODEL_PATH=/app/models
+
 # Copy the current directory contents into the container at /app
 COPY . /app
 
@@ -14,5 +17,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 8000
 
 # Command to run the application
-# Use --app-dir to explicitly tell uvicorn where to find the 'app' module
 CMD ["uvicorn", "--app-dir", "app", "main:app", "--host", "0.0.0.0", "--port", "8000"]

@@ -45,12 +45,13 @@ class PredictionRequest(BaseModel):
     Amount: float
 
 # Load the trained model and scaler
+# This function assumes the model and scaler are stored in a directory specified by the MODEL_PATH environment variable.
 def load_model():
-    base_dir = Path(__file__).resolve().parent.parent
-    model_path = base_dir / "models" / "model.pkl"
-    scaler_path = base_dir / "models" / "scaler.pkl"
+    model_path_base = os.getenv("MODEL_PATH", "./models")
+    model_path = os.path.join(model_path_base, "model.pkl")
+    scaler_path = os.path.join(model_path_base, "scaler.pkl")
 
-    if not model_path.exists() or not scaler_path.exists():
+    if not os.path.exists(model_path) or not os.path.exists(scaler_path):
         print(f"Model or scaler not found at: {model_path} or {scaler_path}")
         return None, None
 
