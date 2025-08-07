@@ -1,26 +1,17 @@
 # Use an official Python runtime as a parent image
-FROM python:3.10
+FROM python:3.10-slim
 
-# Set the working directory in the container
+# Set the working directory to /app
 WORKDIR /app
 
-# Set the environment variable for the model path
-ENV MODEL_PATH=/app/models
+# Copy the current directory contents into the container at /app
+COPY . /app
 
-# Copy the models directory explicitly
-COPY models/ ./models
-
-# Copy the application code explicitly
-COPY app/ ./app
-
-# Copy the requirements file explicitly
-COPY requirements.txt .
-
-# Install the required packages
+# Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Expose the port the app runs on
 EXPOSE 8000
 
-# Command to run the application
-CMD PYTHONPATH=. uvicorn app.main:app --host 0.0.0.0 --port 8000
+# Run uvicorn on the correct module from the working directory
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
