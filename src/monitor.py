@@ -1,5 +1,6 @@
 import logging
 from datetime import datetime
+import json
 
 # Configure logging to write to stdout
 logging.basicConfig(
@@ -12,7 +13,8 @@ def log_prediction(input_data, prediction, confidence=None):
     log_entry = {
         "timestamp": datetime.now().isoformat(),
         "input_data": input_data,
-        "prediction": prediction,
-        "confidence": confidence,
+        "prediction": int(prediction),
+        "confidence": float(confidence) if confidence is not None else None,
     }
-    logging.info(log_entry)
+    # Log the JSON object as a string
+    logging.info(json.dumps(log_entry))
