@@ -1,11 +1,8 @@
 import logging
-import os
 from datetime import datetime
 
-# Set up logging to a file
-log_file_path = "prediction_logs.log"
+# Configure logging to write to stdout
 logging.basicConfig(
-    filename=log_file_path,
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )

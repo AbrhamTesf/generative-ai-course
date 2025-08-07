@@ -3,7 +3,6 @@ import joblib
 import pandas as pd
 from pydantic import BaseModel
 from fastapi import FastAPI
-from pathlib import Path
 from src.monitor import log_prediction
 
 # Initialize FastAPI app
@@ -14,7 +13,7 @@ app = FastAPI(
 )
 
 # Define the data model for the request body
-class PredictionRequest(BaseModel):
+class Transaction(BaseModel):
     V1: float
     V2: float
     V3: float
@@ -46,7 +45,6 @@ class PredictionRequest(BaseModel):
     Amount: float
 
 # Load the trained model and scaler
-# This function assumes the model and scaler are stored in a directory specified by the MODEL_PATH environment variable.
 def load_model():
     model_path_base = os.getenv("MODEL_PATH", "./models")
     model_path = os.path.join(model_path_base, "model.pkl")
@@ -71,25 +69,24 @@ else:
 
 # API endpoint
 @app.post("/predict")
-def predict(request: PredictionRequest):
+def predict(transaction: Transaction):
     if not model or not scaler:
         return {"error": "Model or scaler not loaded. Please check your files."}
 
-    data = pd.DataFrame([request.dict()])
+    # Prepare data for prediction
+    data = pd.DataFrame([transaction.model_dump()])
     
     # Scale the 'Amount' column
     data['Amount'] = scaler.transform(data[['Amount']])
 
     # Make prediction
     prediction = model.predict(data)[0]
-    
-    # Return result
-    if prediction == 1:
-        return {"prediction": "Fraudulent", "class": 1}
-    else:
-        return {"prediction": "Legitimate", "class": 0}
-    prediction = model.predict(df_scaled)[0]
     prediction_class = int(prediction)
+
+    if prediction_class == 1:
+        prediction_label = "Fraudulent"
+    else:
+        prediction_label = "Legitimate"
 
     # Log the prediction details
     log_prediction(
