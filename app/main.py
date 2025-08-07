@@ -4,6 +4,7 @@ import pandas as pd
 from pydantic import BaseModel
 from fastapi import FastAPI
 from pathlib import Path
+from src.monitor import log_prediction
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -87,3 +88,13 @@ def predict(request: PredictionRequest):
         return {"prediction": "Fraudulent", "class": 1}
     else:
         return {"prediction": "Legitimate", "class": 0}
+    prediction = model.predict(df_scaled)[0]
+    prediction_class = int(prediction)
+
+    # Log the prediction details
+    log_prediction(
+        input_data=transaction.model_dump(),
+        prediction=prediction_class
+    )
+
+    return {"class": prediction_class, "prediction": prediction_label}
