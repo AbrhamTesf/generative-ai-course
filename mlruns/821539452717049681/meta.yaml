@@ -1,0 +1,6 @@
+artifact_location: file:///C:/Users/Administrator/OneDrive/Documents/codetrials/fraudulent_transaction_detection/mlruns/821539452717049681
+creation_time: 1754462031883
+experiment_id: '821539452717049681'
+last_update_time: 1754462031883
+lifecycle_stage: active
+name: Fraud Detection RandomForest Training

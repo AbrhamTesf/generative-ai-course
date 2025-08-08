@@ -1,0 +1,29 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: |
+          docker build -t fraud-detection-api .
+
+      - name: Run Docker container
+        run: |
+          docker run -d --name my-api -p 8000:8000 fraud-detection-api
+
+      - name: Install test dependencies
+        run: |
+          pip install requests pytest
+
+      - name: Run API tests
+        run: |
+          pytest tests/

@@ -1,42 +1,17 @@
-# Use Python 3.11 slim image as base
-FROM python:3.11-slim
+# Use an official Python runtime as a parent image
+FROM python:3.10-slim
 
-# Set environment variables
-ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1 \
-    PYTHONPATH=/app \
-    PIP_NO_CACHE_DIR=1 \
-    PIP_DISABLE_PIP_VERSION_CHECK=1
-
-# Set work directory
+# Set the working directory to /app
 WORKDIR /app
 
-# Install system dependencies
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-        build-essential \
-        curl \
-        git \
-        && rm -rf /var/lib/apt/lists/*
+# Copy the current directory contents into the container at /app
+COPY . /app
 
-# Install Python dependencies
-COPY requirements.txt .
+# Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy project
-COPY . .
-
-# Create non-root user
-RUN useradd --create-home --shell /bin/bash app \
-    && chown -R app:app /app
-USER app
-
-# Expose port
+# Expose the port the app runs on
 EXPOSE 8000
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:8000/health || exit 1
-
-# Default command
-CMD ["python", "-m", "http.server", "8000"] 
+# Run uvicorn on the correct module from the working directory
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

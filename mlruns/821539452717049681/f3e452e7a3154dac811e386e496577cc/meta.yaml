@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Administrator/OneDrive/Documents/codetrials/fraudulent_transaction_detection/mlruns/821539452717049681/f3e452e7a3154dac811e386e496577cc/artifacts
+end_time: 1754463792935
+entry_point_name: ''
+experiment_id: '821539452717049681'
+lifecycle_stage: active
+run_id: f3e452e7a3154dac811e386e496577cc
+run_name: honorable-mink-55
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754462032481
+status: 3
+tags: []
+user_id: Administrator
