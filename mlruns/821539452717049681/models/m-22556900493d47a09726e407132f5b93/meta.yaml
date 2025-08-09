@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/Administrator/OneDrive/Documents/codetrials/fraudulent_transaction_detection/mlruns/821539452717049681/models/m-22556900493d47a09726e407132f5b93/artifacts
+creation_timestamp: 1754462394177
+experiment_id: '821539452717049681'
+last_updated_timestamp: 1754462420210
+model_id: m-22556900493d47a09726e407132f5b93
+model_type: null
+name: random_forest_model
+source_run_id: f3e452e7a3154dac811e386e496577cc
+status: 2
+status_message: null
