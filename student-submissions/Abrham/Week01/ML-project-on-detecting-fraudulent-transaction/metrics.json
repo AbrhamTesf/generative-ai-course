@@ -1,0 +1,10 @@
+{
+    "test_accuracy": 0.9995962220427653,
+    "test_f1_score": 0.8743169398907104,
+    "test_precision": 0.9411764705882353,
+    "test_recall": 0.8163265306122449,
+    "cv_mean_f1_score": 0.8457369548344579,
+    "training_runtime_sec": 2245.279943227768,
+    "n_estimators": 100,
+    "max_depth": 15
+}
